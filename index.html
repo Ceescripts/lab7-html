@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>22/EG/CO/1782</h1>
+    <div class="box" id="box">Hover over me</div>
+
+    <button id="counterBtn">Click Me</button>
+    <p id="count">Count: 0</p>
+
+    <form id="form">
+        <input type="text" id="email" placeholder="Enter email">
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="timerText">Wait for it...</p>
+
+    <a href="https://google.com" id="link">Go to Google</a>
+
+    <script>
+        // 1. Mouseover background change
+        let box = document.getElementById("box");
+        box.addEventListener("mouseover", function() {
+            box.style.backgroundColor = "coral";
+        });
+
+        box.addEventListener("mouseout", function() {
+            box.style.backgroundColor = "lightblue";
+        });
+
+        // 2. Counter
+        let count = 0;
+        document.getElementById("counterBtn").addEventListener("click", function() {
+            count++;
+            document.getElementById("count").innerHTML = "Count: " + count;
+        });
+
+        // 3. Form validation
+        document.getElementById("form").addEventListener("submit", function(e) {
+            let email = document.getElementById("email").value;
+
+            if (!email.includes("@")) {
+                alert("Invalid email!");
+                e.preventDefault();
+            }
+        });
+
+        // 4. Timer (5 seconds)
+        setTimeout(function() {
+            document.getElementById("timerText").innerHTML = "Text changed after 5 seconds!";
+        }, 5000);
+
+        // 5. Prevent default link behavior
+        document.getElementById("link").addEventListener("click", function(e) {
+            e.preventDefault();
+            alert("Navigation prevented!");
+        });
+    </script>
+
+</body>
+</html>
